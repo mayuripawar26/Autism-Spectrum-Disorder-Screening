@@ -1,0 +1,20 @@
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+
+# Project artifacts and models
+models/*.h5
+models/*.keras
+data/raw/
+data/processed/
+
+# System / OS files
+.DS_Store
+Thumbs.db

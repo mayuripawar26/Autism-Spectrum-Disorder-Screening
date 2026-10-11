@@ -1,0 +1,21 @@
+============================================================
+CROSS-MODAL CNN ASD SCREENING - TEST EVALUATION REPORT
+============================================================
+
+Total Test Samples: 141
+Class 0 (Low Risk):  103 samples
+Class 1 (High Risk): 38 samples
+
+--- CLASSIFICATION REPORT ---
+                     precision    recall  f1-score   support
+
+ Low Risk (Class 0)     0.9717    1.0000    0.9856       103
+High Risk (Class 1)     1.0000    0.9211    0.9589        38
+
+           accuracy                         0.9787       141
+          macro avg     0.9858    0.9605    0.9723       141
+       weighted avg     0.9793    0.9787    0.9784       141
+
+ROC-AUC Score:      0.9995
+Specificity:        1.0000
+Confusion Matrix:   TN=103, FP=0, FN=3, TP=35

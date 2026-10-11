@@ -1,0 +1,194 @@
+[
+  {
+    "sample_idx": 634,
+    "category": "Correct",
+    "true_class": 1,
+    "pred_class": 1,
+    "pred_prob": 0.9542568922042847,
+    "top_interactions": [
+      {
+        "feature_i": "A5_Score",
+        "feature_j": "A10_Score",
+        "activation": 0.6614763140678406
+      },
+      {
+        "feature_i": "A3_Score",
+        "feature_j": "A10_Score",
+        "activation": 0.6338227987289429
+      },
+      {
+        "feature_i": "A3_Score",
+        "feature_j": "A9_Score",
+        "activation": 0.5810417532920837
+      }
+    ]
+  },
+  {
+    "sample_idx": 553,
+    "category": "Correct",
+    "true_class": 1,
+    "pred_class": 1,
+    "pred_prob": 0.9027450680732727,
+    "top_interactions": [
+      {
+        "feature_i": "A3_Score",
+        "feature_j": "A10_Score",
+        "activation": 0.6811724901199341
+      },
+      {
+        "feature_i": "A5_Score",
+        "feature_j": "A10_Score",
+        "activation": 0.653300404548645
+      },
+      {
+        "feature_i": "A7_Score",
+        "feature_j": "A10_Score",
+        "activation": 0.6457716822624207
+      }
+    ]
+  },
+  {
+    "sample_idx": 679,
+    "category": "Correct",
+    "true_class": 1,
+    "pred_class": 1,
+    "pred_prob": 0.9999332427978516,
+    "top_interactions": [
+      {
+        "feature_i": "A4_Score",
+        "feature_j": "A6_Score",
+        "activation": 0.9018951058387756
+      },
+      {
+        "feature_i": "A3_Score",
+        "feature_j": "A5_Score",
+        "activation": 0.8767790198326111
+      },
+      {
+        "feature_i": "A6_Score",
+        "feature_j": "A3_Score",
+        "activation": 0.8667068481445312
+      }
+    ]
+  },
+  {
+    "sample_idx": 99,
+    "category": "Correct",
+    "true_class": 0,
+    "pred_class": 0,
+    "pred_prob": 8.950145229391637e-07,
+    "top_interactions": [
+      {
+        "feature_i": "A1_Score",
+        "feature_j": "age_normalized",
+        "activation": 0.5322859287261963
+      },
+      {
+        "feature_i": "A1_Score",
+        "feature_j": "A2_Score",
+        "activation": 0.5159185528755188
+      },
+      {
+        "feature_i": "A1_Score",
+        "feature_j": "A3_Score",
+        "activation": 0.5159185528755188
+      }
+    ]
+  },
+  {
+    "sample_idx": 258,
+    "category": "Correct",
+    "true_class": 0,
+    "pred_class": 0,
+    "pred_prob": 0.002493853447958827,
+    "top_interactions": [
+      {
+        "feature_i": "age_normalized",
+        "feature_j": "A3_Score",
+        "activation": 0.7413773536682129
+      },
+      {
+        "feature_i": "A4_Score",
+        "feature_j": "age_normalized",
+        "activation": 0.6970988512039185
+      },
+      {
+        "feature_i": "age_normalized",
+        "feature_j": "family_history",
+        "activation": 0.6820502281188965
+      }
+    ]
+  },
+  {
+    "sample_idx": 451,
+    "category": "Correct",
+    "true_class": 0,
+    "pred_class": 0,
+    "pred_prob": 1.321728814218659e-05,
+    "top_interactions": [
+      {
+        "feature_i": "A1_Score",
+        "feature_j": "age_normalized",
+        "activation": 0.5749542117118835
+      },
+      {
+        "feature_i": "age_normalized",
+        "feature_j": "A6_Score",
+        "activation": 0.5470426678657532
+      },
+      {
+        "feature_i": "age_normalized",
+        "feature_j": "A10_Score",
+        "activation": 0.5368012189865112
+      }
+    ]
+  },
+  {
+    "sample_idx": 148,
+    "category": "Misclassified / Edge Case",
+    "true_class": 1,
+    "pred_class": 0,
+    "pred_prob": 0.2810197174549103,
+    "top_interactions": [
+      {
+        "feature_i": "jaundice",
+        "feature_j": "age_normalized",
+        "activation": 0.8356747031211853
+      },
+      {
+        "feature_i": "A4_Score",
+        "feature_j": "age_normalized",
+        "activation": 0.8216495513916016
+      },
+      {
+        "feature_i": "family_history",
+        "feature_j": "age_normalized",
+        "activation": 0.7899283170700073
+      }
+    ]
+  },
+  {
+    "sample_idx": 151,
+    "category": "Misclassified / Edge Case",
+    "true_class": 1,
+    "pred_class": 0,
+    "pred_prob": 0.4502312242984772,
+    "top_interactions": [
+      {
+        "feature_i": "A1_Score",
+        "feature_j": "age_normalized",
+        "activation": 0.5745617747306824
+      },
+      {
+        "feature_i": "A7_Score",
+        "feature_j": "A2_Score",
+        "activation": 0.565427303314209
+      },
+      {
+        "feature_i": "A1_Score",
+        "feature_j": "A1_Score",
+        "activation": 0.5431642532348633
+      }
+    ]
+  }
+]
