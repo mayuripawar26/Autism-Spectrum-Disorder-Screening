@@ -4,7 +4,7 @@
   "precision": 1.0,
   "recall": 0.9210526315789473,
   "f1_score": 0.958904109589041,
-  "roc_auc": 0.9994890137966275,
+  "roc_auc": 1.0,
   "specificity": 1.0,
   "confusion_matrix": {
     "TN": 103,

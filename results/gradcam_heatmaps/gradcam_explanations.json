@@ -4,22 +4,22 @@
     "category": "Correct",
     "true_class": 1,
     "pred_class": 1,
-    "pred_prob": 0.9542568922042847,
+    "pred_prob": 0.853801965713501,
     "top_interactions": [
+      {
+        "feature_i": "A3_Score",
+        "feature_j": "A10_Score",
+        "activation": 0.6820145845413208
+      },
       {
         "feature_i": "A5_Score",
         "feature_j": "A10_Score",
-        "activation": 0.6614763140678406
+        "activation": 0.681592583656311
       },
       {
-        "feature_i": "A3_Score",
-        "feature_j": "A10_Score",
-        "activation": 0.6338227987289429
-      },
-      {
-        "feature_i": "A3_Score",
+        "feature_i": "A5_Score",
         "feature_j": "A9_Score",
-        "activation": 0.5810417532920837
+        "activation": 0.6564927101135254
       }
     ]
   },
@@ -28,22 +28,22 @@
     "category": "Correct",
     "true_class": 1,
     "pred_class": 1,
-    "pred_prob": 0.9027450680732727,
+    "pred_prob": 0.7537244558334351,
     "top_interactions": [
       {
-        "feature_i": "A3_Score",
-        "feature_j": "A10_Score",
-        "activation": 0.6811724901199341
+        "feature_i": "A5_Score",
+        "feature_j": "A2_Score",
+        "activation": 0.7183874845504761
       },
       {
-        "feature_i": "A5_Score",
-        "feature_j": "A10_Score",
-        "activation": 0.653300404548645
+        "feature_i": "A10_Score",
+        "feature_j": "A3_Score",
+        "activation": 0.6975736618041992
       },
       {
         "feature_i": "A7_Score",
         "feature_j": "A10_Score",
-        "activation": 0.6457716822624207
+        "activation": 0.6908775568008423
       }
     ]
   },
@@ -52,22 +52,22 @@
     "category": "Correct",
     "true_class": 1,
     "pred_class": 1,
-    "pred_prob": 0.9999332427978516,
+    "pred_prob": 0.9994967579841614,
     "top_interactions": [
       {
         "feature_i": "A4_Score",
         "feature_j": "A6_Score",
-        "activation": 0.9018951058387756
+        "activation": 0.8581903576850891
       },
       {
         "feature_i": "A3_Score",
         "feature_j": "A5_Score",
-        "activation": 0.8767790198326111
+        "activation": 0.8578474521636963
       },
       {
         "feature_i": "A6_Score",
         "feature_j": "A3_Score",
-        "activation": 0.8667068481445312
+        "activation": 0.8058786392211914
       }
     ]
   },
@@ -76,22 +76,22 @@
     "category": "Correct",
     "true_class": 0,
     "pred_class": 0,
-    "pred_prob": 8.950145229391637e-07,
+    "pred_prob": 6.12889853073284e-05,
     "top_interactions": [
       {
-        "feature_i": "A1_Score",
-        "feature_j": "age_normalized",
-        "activation": 0.5322859287261963
+        "feature_i": "age_normalized",
+        "feature_j": "A1_Score",
+        "activation": 0.5861522555351257
       },
       {
         "feature_i": "A1_Score",
-        "feature_j": "A2_Score",
-        "activation": 0.5159185528755188
+        "feature_j": "A1_Score",
+        "activation": 0.5726087093353271
       },
       {
-        "feature_i": "A1_Score",
-        "feature_j": "A3_Score",
-        "activation": 0.5159185528755188
+        "feature_i": "A7_Score",
+        "feature_j": "A1_Score",
+        "activation": 0.5724198818206787
       }
     ]
   },
@@ -100,22 +100,22 @@
     "category": "Correct",
     "true_class": 0,
     "pred_class": 0,
-    "pred_prob": 0.002493853447958827,
+    "pred_prob": 0.009138939902186394,
     "top_interactions": [
       {
-        "feature_i": "age_normalized",
-        "feature_j": "A3_Score",
-        "activation": 0.7413773536682129
-      },
-      {
-        "feature_i": "A4_Score",
+        "feature_i": "A3_Score",
         "feature_j": "age_normalized",
-        "activation": 0.6970988512039185
+        "activation": 0.6811165809631348
       },
       {
-        "feature_i": "age_normalized",
-        "feature_j": "family_history",
-        "activation": 0.6820502281188965
+        "feature_i": "family_history",
+        "feature_j": "age_normalized",
+        "activation": 0.6744140982627869
+      },
+      {
+        "feature_i": "family_history",
+        "feature_j": "A3_Score",
+        "activation": 0.6631745100021362
       }
     ]
   },
@@ -124,46 +124,22 @@
     "category": "Correct",
     "true_class": 0,
     "pred_class": 0,
-    "pred_prob": 1.321728814218659e-05,
+    "pred_prob": 0.0003531491383910179,
     "top_interactions": [
       {
-        "feature_i": "A1_Score",
-        "feature_j": "age_normalized",
-        "activation": 0.5749542117118835
-      },
-      {
         "feature_i": "age_normalized",
-        "feature_j": "A6_Score",
-        "activation": 0.5470426678657532
+        "feature_j": "A1_Score",
+        "activation": 0.6463636159896851
       },
       {
-        "feature_i": "age_normalized",
-        "feature_j": "A10_Score",
-        "activation": 0.5368012189865112
-      }
-    ]
-  },
-  {
-    "sample_idx": 148,
-    "category": "Misclassified / Edge Case",
-    "true_class": 1,
-    "pred_class": 0,
-    "pred_prob": 0.2810197174549103,
-    "top_interactions": [
-      {
-        "feature_i": "jaundice",
+        "feature_i": "A6_Score",
         "feature_j": "age_normalized",
-        "activation": 0.8356747031211853
+        "activation": 0.6196498274803162
       },
       {
-        "feature_i": "A4_Score",
+        "feature_i": "A10_Score",
         "feature_j": "age_normalized",
-        "activation": 0.8216495513916016
-      },
-      {
-        "feature_i": "family_history",
-        "feature_j": "age_normalized",
-        "activation": 0.7899283170700073
+        "activation": 0.608259916305542
       }
     ]
   },
@@ -172,22 +148,46 @@
     "category": "Misclassified / Edge Case",
     "true_class": 1,
     "pred_class": 0,
-    "pred_prob": 0.4502312242984772,
+    "pred_prob": 0.39693552255630493,
     "top_interactions": [
       {
         "feature_i": "A1_Score",
         "feature_j": "age_normalized",
-        "activation": 0.5745617747306824
+        "activation": 0.710883378982544
       },
       {
-        "feature_i": "A7_Score",
-        "feature_j": "A2_Score",
-        "activation": 0.565427303314209
+        "feature_i": "age_normalized",
+        "feature_j": "family_history",
+        "activation": 0.6809771060943604
       },
       {
-        "feature_i": "A1_Score",
-        "feature_j": "A1_Score",
-        "activation": 0.5431642532348633
+        "feature_i": "A4_Score",
+        "feature_j": "gender",
+        "activation": 0.6540714502334595
+      }
+    ]
+  },
+  {
+    "sample_idx": 107,
+    "category": "Misclassified / Edge Case",
+    "true_class": 1,
+    "pred_class": 0,
+    "pred_prob": 0.442757248878479,
+    "top_interactions": [
+      {
+        "feature_i": "age_normalized",
+        "feature_j": "family_history",
+        "activation": 0.7579469680786133
+      },
+      {
+        "feature_i": "jaundice",
+        "feature_j": "age_normalized",
+        "activation": 0.7369134426116943
+      },
+      {
+        "feature_i": "age_normalized",
+        "feature_j": "gender",
+        "activation": 0.6713833808898926
       }
     ]
   }

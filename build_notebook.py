@@ -5,9 +5,9 @@ import os
 nb = nbf.v4.new_notebook()
 nb.metadata = {
     "kernelspec": {
-        "display_name": "Python 3 (ipykernel)",
+        "display_name": "Python (ASD venv)",
         "language": "python",
-        "name": "python3"
+        "name": "asd-venv"
     },
     "language_info": {
         "codemirror_mode": {"name": "ipython", "version": 3},

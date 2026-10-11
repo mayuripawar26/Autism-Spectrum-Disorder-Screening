@@ -2,7 +2,7 @@
 
 An end-to-end deep learning framework that transforms adult Autism Spectrum Disorder (ASD) tabular screening data (AQ-10 behavioral scores and demographic attributes) into 224×224 RGB image representations via cross-modal feature encoding. A lightweight Convolutional Neural Network (CNN) classifies ASD risk, and Gradient-weighted Class Activation Mapping (Grad-CAM) explains individual predictions by highlighting specific behavioral and demographic interaction pairs.
 
-Project Location: `D:\ASD-CrossModal-CNN\`
+Project Location: `D:\Autism-Spectrum-Disorder-Screening\`
 
 ---
 
@@ -10,11 +10,14 @@ Project Location: `D:\ASD-CrossModal-CNN\`
 1. [Architecture & Workflow](#architecture--workflow)
 2. [Folder Structure](#folder-structure)
 3. [Environment Setup](#environment-setup)
-4. [Step-by-Step Reproduction Guide](#step-by-step-reproduction-guide)
-5. [Evaluation Results](#evaluation-results)
-6. [Grad-CAM Interpretability & Feature Mapping](#grad-cam-interpretability--feature-mapping)
-7. [Train/Test Leakage Verification](#traintest-leakage-verification)
-8. [Hardware & Execution Notes](#hardware--execution-notes)
+4. [Interactive Web Dashboard (Streamlit)](#interactive-web-dashboard-streamlit)
+5. [CLI Patient Screening & Inference](#cli-patient-screening--inference)
+6. [Step-by-Step Reproduction Guide](#step-by-step-reproduction-guide)
+7. [Automated Test Suite](#automated-test-suite)
+8. [Evaluation Results](#evaluation-results)
+9. [Grad-CAM Interpretability & Feature Mapping](#grad-cam-interpretability--feature-mapping)
+10. [Train/Test Leakage Verification](#traintest-leakage-verification)
+11. [Hardware & Execution Notes](#hardware--execution-notes)
 
 ---
 
@@ -40,7 +43,7 @@ Tabular ASD Data (704 samples × 14 features)
    ├── Step 4: Lightweight CNN Classification
    │      - 3 Conv Blocks: Conv2D (32/64/128) -> BatchNorm -> ReLU -> MaxPool2D
    │      - GlobalAveragePooling2D + Dense(64, ReLU) + Dropout(0.5) + Dense(1, Sigmoid)
-   │      - Balanced Class Weighting + EarlyStopping + ModelCheckpoint (models/cnn_asd_model.h5)
+   │      - Balanced Class Weighting + EarlyStopping + ModelCheckpoint (models/cnn_asd_model.keras)
    │
    ├── Step 5: Explainability with Grad-CAM
    │      - Gradients computed on last conv layer ('conv3')
@@ -55,7 +58,14 @@ Tabular ASD Data (704 samples × 14 features)
 ## 📁 Folder Structure
 
 ```
-ASD-CrossModal-CNN/
+Autism-Spectrum-Disorder-Screening/
+├── app.py                                        # Interactive Streamlit Web Dashboard
+├── ASD_CrossModal_CNN_Pipeline.ipynb             # Unified end-to-end interactive notebook (Plotly)
+├── audit_overfitting.py                          # Generalization & leakage verification script
+├── build_notebook.py                             # Script to compile pipeline into notebook
+├── requirements.txt                              # Pinned Python dependencies (including Streamlit, Plotly)
+├── verify_env.py                                 # Environment import & GPU/CPU verification
+├── README.md                                     # Full documentation and results
 ├── data/
 │   ├── raw/
 │   │   └── autism_adult_raw.csv                  # Merged raw dataset from UCI repo
@@ -77,11 +87,14 @@ ASD-CrossModal-CNN/
 │   ├── data_preprocessing.py                     # Steps 1 & 2: Acquisition and cleaning
 │   ├── cross_modal_encoding.py                   # Step 3: 224x224 RGB matrix encoding
 │   ├── model.py                                  # Step 4: Lightweight CNN architecture
-│   ├── train.py                                  # Step 4: Training with class weighting
+│   ├── train.py                                  # Step 4: Training with class weighting & callbacks
 │   ├── gradcam.py                                # Step 5: Grad-CAM generation & feature mapping
-│   └── evaluate.py                               # Step 6: Held-out test evaluation & report
+│   ├── evaluate.py                               # Step 6: Held-out test evaluation & report
+│   └── predict.py                                # Inference API & CLI for patient screening
+├── tests/
+│   └── test_pipeline.py                          # Automated regression & unit test suite
 ├── notebooks/
-│   └── eda_and_crossmodal_pipeline.ipynb         # Interactive EDA and walkthrough
+│   └── eda_and_crossmodal_pipeline.ipynb         # Executed interactive EDA and walkthrough
 ├── results/
 │   ├── sample_encoded_images.png                 # Sanity-check 2x3 image grid
 │   ├── metrics/
@@ -94,13 +107,9 @@ ASD-CrossModal-CNN/
 │       ├── gradcam_summary_gallery.png           # 8-sample explanation gallery
 │       ├── gradcam_explanations.json             # Mapped feature pairs per sample
 │       └── gradcam_sample_*.png                  # Individual 3-panel overlays
-├── models/
-│   ├── cnn_asd_model.h5                          # Keras HDF5 model checkpoint
-│   └── cnn_asd_model.keras                       # Native Keras 3 format
-├── ASD_CrossModal_CNN_Pipeline.ipynb             # Unified end-to-end interactive notebook (Plotly)
-├── .gitignore
-├── requirements.txt                              # Pinned Python package dependencies (including Plotly)
-└── README.md                                     # Full documentation and results
+└── models/
+    ├── cnn_asd_model.h5                          # Keras HDF5 model checkpoint
+    └── cnn_asd_model.keras                       # Native Keras 3 format
 ```
 
 ---
@@ -137,6 +146,66 @@ pip install -r requirements.txt
 
 ---
 
+## 🌐 Interactive Web Dashboard (Streamlit)
+
+Launch the interactive clinical screening and explainability web dashboard:
+
+```bash
+# Activate virtual environment
+.venv\Scripts\Activate.ps1
+
+# Launch Streamlit application
+streamlit run app.py
+```
+
+### Dashboard Features:
+1. **Interactive Patient Intake**: Form with full clinical descriptions for all 10 AQ-10 questions and demographic attributes (Age slider, Gender, Jaundice history, Family history).
+2. **One-Click Clinical Presets**: Instantly populate Typical High-Risk, Typical Low-Risk, Borderline cases, or randomly draw from the held-out test cohort.
+3. **Multi-Channel Matrix Decomposition**: Inspect Channel R (Outer Product), Channel G (Absolute Difference), Channel B (Pearson-Scaled), and the composite 224×224 RGB image in real-time.
+4. **Grad-CAM Explainability Overlay**: Real-time class activation map overlay with an interactive horizontal bar chart ranking the top contributing question pairs ($f_i \times f_j$).
+5. **Model Audit Tab**: Embedded held-out test confusion matrix, ROC curve, training curves, and zero-leakage verification checklist.
+
+---
+
+## 💻 CLI Patient Screening & Inference
+
+Screen single patients directly from the terminal or automate batch screenings using `src/predict.py`:
+
+```bash
+# 1. Screen an existing dataset sample by index (e.g., sample 553):
+python src/predict.py --sample-idx 553
+
+# 2. Screen a custom patient profile with individual scores:
+python src/predict.py --scores "1,1,1,1,1,0,1,1,1,1" --age 32 --gender m --jaundice yes --family-history yes --output-dir results/single_prediction
+
+# 3. Quick demo on a representative high-risk profile:
+python src/predict.py
+```
+
+Outputs include:
+- Binary risk classification (High Risk vs. Low Risk) and risk probability percentage.
+- Top contributing behavioral question pairs with clinical interpretations.
+- Synthesized 224×224 encoded image (`encoded_image.png`) and Grad-CAM overlay (`gradcam_overlay.png`).
+
+---
+
+## 🧪 Automated Test Suite
+
+Run the automated regression and unit test suite verifying the end-to-end pipeline:
+
+```bash
+python tests/test_pipeline.py
+```
+
+Tests cover:
+- Data acquisition & preprocessing integrity (zero NaNs, valid schema, normalized age).
+- Zero train/test leakage verification (disjoint index assertion).
+- Cross-modal encoding bounds ($[0, 1]$) and dimensions ($14 \times 14 \times 3$).
+- CNN architecture layer structure and parameter count (< 120k params).
+- End-to-end patient inference and Grad-CAM heatmap generation.
+
+---
+
 ## 🚀 Step-by-Step Reproduction Guide
 
 ### 📓 Option A: Interactive Jupyter Notebook (All-in-One with Plotly)
@@ -146,7 +215,7 @@ Run the entire workflow end-to-end inside the unified notebook:
 jupyter notebook ASD_CrossModal_CNN_Pipeline.ipynb
 
 # Or execute headlessly via nbconvert
-jupyter nbconvert --to notebook --execute --inplace ASD_CrossModal_CNN_Pipeline.ipynb
+jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.kernel_name=asd-venv ASD_CrossModal_CNN_Pipeline.ipynb
 ```
 This notebook integrates all steps (data acquisition, preprocessing, cross-modal encoding, CNN training, Grad-CAM, and held-out test evaluation) with interactive Plotly visualizations for EDA, training curves, feature attributions, confusion matrices, and ROC curves.
 
@@ -180,8 +249,8 @@ python src/cross_modal_encoding.py
 python src/train.py
 ```
 - Builds a 3-block custom CNN with `GlobalAveragePooling2D` (total params: 102,465 / ~400 KB).
-- Applies balanced class weights: `{0: 0.683, 1: 1.864}`.
-- Employs `EarlyStopping` (patience=10) and `ModelCheckpoint` saving to `models/cnn_asd_model.h5`.
+- Applies balanced class weights: `{0: 0.684, 1: 1.860}`.
+- Employs `EarlyStopping` (patience=15) and `ModelCheckpoint` saving to `models/cnn_asd_model.keras`.
 - Saves training curves to `results/metrics/training_curves.png`.
 
 ### Step 5: Grad-CAM Explainability
@@ -207,18 +276,18 @@ python src/evaluate.py
 
 | Metric | Value | Clinical Interpretation |
 | :--- | :---: | :--- |
-| **Test Accuracy** | **100.00%** | Overall correct risk stratification |
+| **Test Accuracy** | **97.87%** | Overall correct risk stratification |
 | **Precision (High Risk)** | **100.00%** | Zero false positives ($FP = 0$) |
-| **Recall / Sensitivity** | **100.00%** | Zero missed high-risk cases ($FN = 0$) |
-| **Specificity** | **100.00%** | All low-risk cases correctly rejected |
-| **F1-Score** | **100.00%** | Harmonic mean of precision and recall |
+| **Recall / Sensitivity** | **92.11%** | 35 of 38 high-risk cases detected |
+| **Specificity** | **100.00%** | All 103 low-risk cases correctly rejected |
+| **F1-Score** | **95.89%** | Harmonic mean of precision and recall |
 | **ROC-AUC Score** | **1.0000** | Perfect separation of risk distributions |
 
 ### Confusion Matrix Breakdown
 - **True Negatives (TN)**: 103 (100% of Low Risk class)
 - **False Positives (FP)**: 0 (Type I Error)
-- **False Negatives (FN)**: 0 (Type II Error)
-- **True Positives (TP)**: 38 (100% of High Risk class)
+- **False Negatives (FN)**: 3 (Type II Error)
+- **True Positives (TP)**: 35 (92.11% of High Risk class)
 
 The detailed report is preserved in `results/metrics/classification_report.txt`.
 

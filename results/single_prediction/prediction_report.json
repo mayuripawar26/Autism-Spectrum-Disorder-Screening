@@ -1,0 +1,42 @@
+{
+  "risk_label": "High Risk (Class 1)",
+  "predicted_class": 1,
+  "risk_probability": 0.7731326818466187,
+  "top_feature_interactions": [
+    {
+      "feature_i": "A9_Score",
+      "feature_j": "A3_Score",
+      "activation": 0.7555593848228455,
+      "desc_i": "I find it easy to work out what someone is thinking or feeling just by looking at their face.",
+      "desc_j": "I find it easy to do more than one thing at once."
+    },
+    {
+      "feature_i": "A9_Score",
+      "feature_j": "A2_Score",
+      "activation": 0.6308414340019226,
+      "desc_i": "I find it easy to work out what someone is thinking or feeling just by looking at their face.",
+      "desc_j": "I usually concentrate more on the whole picture, rather than small details."
+    },
+    {
+      "feature_i": "A10_Score",
+      "feature_j": "A5_Score",
+      "activation": 0.6199138164520264,
+      "desc_i": "I find it difficult to work out people's intentions.",
+      "desc_j": "I find it easy to 'read between the lines' when someone is talking to me."
+    },
+    {
+      "feature_i": "A5_Score",
+      "feature_j": "A3_Score",
+      "activation": 0.5914289951324463,
+      "desc_i": "I find it easy to 'read between the lines' when someone is talking to me.",
+      "desc_j": "I find it easy to do more than one thing at once."
+    },
+    {
+      "feature_i": "A7_Score",
+      "feature_j": "A10_Score",
+      "activation": 0.5825117230415344,
+      "desc_i": "When I'm reading a story, I find it difficult to work out the characters' intentions.",
+      "desc_j": "I find it difficult to work out people's intentions."
+    }
+  ]
+}

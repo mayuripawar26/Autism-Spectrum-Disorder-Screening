@@ -9,7 +9,7 @@ on small sample regimes (~700 samples).
 import tensorflow as tf
 from tensorflow.keras import layers, models
 
-def build_custom_cnn(input_shape=(224, 224, 3), learning_rate=1e-3):
+def build_custom_cnn(input_shape=(224, 224, 3), learning_rate=3e-4):
     """
     Constructs a 3-block convolutional neural network with BatchNorm,
     GlobalAveragePooling2D, Dense, Dropout, and Sigmoid output.

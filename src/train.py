@@ -100,13 +100,13 @@ def train_cnn(manifest_path="data/processed/encoded_images_manifest.csv",
     print("\nNote: Destructive spatial augmentations (rotation/shear) omitted to preserve coordinate semantics.")
 
     # 4. Build Model
-    model = build_custom_cnn(input_shape=(224, 224, 3), learning_rate=1e-3)
+    model = build_custom_cnn(input_shape=(224, 224, 3), learning_rate=3e-4)
 
     # 5. Callbacks: EarlyStopping and ModelCheckpoint
     callbacks = [
         EarlyStopping(
             monitor='val_loss',
-            patience=10,
+            patience=15,
             restore_best_weights=True,
             verbose=1,
             mode='min'
